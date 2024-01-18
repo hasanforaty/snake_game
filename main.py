@@ -46,5 +46,4 @@ while game_is_on:
     if snake.is_snake_collide_to_itself():
         game_over()
 
-
 screen.exitonclick()

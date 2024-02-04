@@ -21,6 +21,7 @@ screen.listen()
 def game_over():
     global game_is_on
     game_is_on = False
+    scoreboard.game_over()
 
 
 screen.onkey(game_over, "q")

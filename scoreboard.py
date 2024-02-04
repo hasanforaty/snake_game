@@ -8,6 +8,9 @@ class Scoreboard(Turtle):
     def get_high_score(self):
         with open(DATA_FILE, 'r') as file:
             data = file.read()
+            print("data is " + data)
+            if len(data) == 0:
+                data = "0"
             return int(data)
 
     def set_high_score(self, score):

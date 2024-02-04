@@ -16,17 +16,18 @@ snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 screen.listen()
-screen.onkey(snake.up, 'Up')
-screen.onkey(snake.down, 'Down')
-screen.onkey(snake.left, 'Left')
-screen.onkey(snake.right, 'Right')
 
 
 def game_over():
     global game_is_on
     game_is_on = False
-    scoreboard.game_over()
 
+
+screen.onkey(game_over, "q")
+screen.onkey(snake.up, 'Up')
+screen.onkey(snake.down, 'Down')
+screen.onkey(snake.left, 'Left')
+screen.onkey(snake.right, 'Right')
 
 while game_is_on:
     screen.update()
@@ -41,9 +42,11 @@ while game_is_on:
 
     #   Detect collision with wall
     if snake.head.xcor() > 285 or snake.head.xcor() < -285 or snake.head.ycor() > 285 or snake.head.ycor() < -285:
-        game_over()
+        scoreboard.reset()
+        snake.reset_snake()
     #   detect collision with tail
     if snake.is_snake_collide_to_itself():
-        game_over()
+        scoreboard.reset()
+        snake.reset_snake()
 
 screen.exitonclick()

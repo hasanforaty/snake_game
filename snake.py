@@ -9,12 +9,13 @@ RIGHT = 0
 
 
 class Snake:
+    def create_snake(self):
+        for position in STARTING_POSITION:
+            self.add_segments(position)
 
     def __init__(self):
         self.segments = []
-
-        for position in STARTING_POSITION:
-            self.add_segments(position)
+        self.create_snake()
         self.head = self.segments[0]
 
     def add_segments(self, position):
@@ -55,3 +56,10 @@ class Snake:
             if self.head.distance(segment) < 10:
                 return True
         return False
+
+    def reset_snake(self):
+        for segment in self.segments:
+            segment.reset()
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
